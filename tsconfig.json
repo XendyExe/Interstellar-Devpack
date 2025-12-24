@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "module": "commonjs", // Required for typescript files
+    "target": "es6",
+    "types": [],
+    "esModuleInterop": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "paths": {
+      "@interstellar/InterstellarScriptingMod": ["./__devpack__/Interstellar/API/InterstellarScriptingMod"],
+      "@interstellar/StellarAPI": ["./__devpack__/Interstellar/API/StellarAPI"],
+      "@interstellar/InterstellarEvents": ["./__devpack__/InterstellarAPI/InterstellarEvents"],
+      "@interstellar/StellarEventManager": ["./__devpack__/Interstellar/API/StellarEventManager"],
+      "@interstellar/StellarCommandsManager": ["./__devpack__/Interstellar/API/StellarCommandsManager"],
+      "@interstellar/Zone": ["./__devpack__/Interstellar/Graphical/Zone"],
+      "@interstellar/NavZone": ["./__devpack__/Interstellar/Graphical/NavZone"],
+      "@interstellar/CycleZone": ["./__devpack__/Interstellar/Graphical/CycleZone"],
+      "@interstellar/ZoneBackground": ["./__devpack__/Interstellar/Graphical/ZoneBackground"],
+      "@interstellar/Interstellar": ["./__devpack__/Interstellar/Interstellar"]
+    },
+
+    "jsx": "react",
+		"jsxFactory": "h",
+		"jsxFragmentFactory": "Fragment",
+
+    "strict": true,
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force",
+    "moduleResolution": "node",
+    "lib": ["DOM", "DOM.Iterable", "ES2021"]
+  }
+}
