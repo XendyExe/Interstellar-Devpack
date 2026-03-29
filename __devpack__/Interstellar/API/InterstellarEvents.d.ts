@@ -4,7 +4,8 @@ export declare enum TriggerEvent {
     FRAME_START = 0,
     FRAME_END = 1,
     LOAD = 2,
-    CONSTANT_TICK = 3
+    CONSTANT_TICK = 3,
+    DRAW_TOP = 4
 }
 export declare abstract class BaseEvent {
     dispatch(): void;
@@ -104,5 +105,26 @@ export declare class ProcessMOTDEvent extends BaseEvent {
     constructor(d: string);
 }
 export declare class RenderInventoryEvent extends UIEvent {
+}
+export declare class RenderAdvertsEvent extends CancelableEvent {
+}
+export declare class ProcessAdvertsEvent extends BaseEvent {
+    data: any;
+    constructor(data: any);
+}
+export declare class AdvertClickEvent extends CancelableEvent {
+    url: string;
+    hover_sign: any;
+    constructor(url: string, hover_sign: any);
+}
+export declare abstract class RenderPassEvent extends CancelableEvent {
+    world: any;
+    constructor(world: any);
+}
+export declare class RenderPassOneEvent extends RenderPassEvent {
+}
+export declare class RenderPassTwoEvent extends RenderPassEvent {
+}
+export declare class RenderPassThreeEvent extends RenderPassEvent {
 }
 export declare function createEventExports(): Record<string, any>;

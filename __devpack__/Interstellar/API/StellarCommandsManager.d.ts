@@ -2,6 +2,7 @@ export declare abstract class Argument<T> {
     abstract autocomplete(split: string): string[];
     abstract extractValue(split: string): T;
     name: string;
+    greedy: boolean;
     constructor(name: string);
 }
 export declare class OptionsArgument extends Argument<string> {
@@ -24,6 +25,7 @@ export declare class StringArgument extends Argument<string> {
     extractValue(split: string): string;
 }
 export declare class PlayerArgument extends Argument<string> {
+    greedy: boolean;
     autocomplete(split: string): string[];
     extractValue(split: string): string;
 }

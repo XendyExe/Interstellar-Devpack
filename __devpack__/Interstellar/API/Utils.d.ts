@@ -11,6 +11,10 @@ export interface InputDragInfo {
 export interface CurrentShipData {
     name: string;
     hex: string;
+    health: number;
+    max_health: number;
+    warp_time: number;
+    max_warp_time: number;
 }
 export interface PlayerListEntry {
     alias_discrims: [string, number][];

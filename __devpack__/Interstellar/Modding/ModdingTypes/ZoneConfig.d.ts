@@ -1,12 +1,16 @@
 import { Music } from "../../Music/Music";
+export interface BasePostProcessingConfig {
+    type: string;
+    layer: string;
+}
 interface GenericZone {
     music?: string;
     music_start?: number;
     textures?: Record<string, string>;
-    filters?: Record<string, Record<string, any>>;
     background?: string;
     color?: string | number;
     theme?: string;
+    postprocess: BasePostProcessingConfig[];
 }
 export interface SubzoneConfig extends GenericZone {
     name?: string;
@@ -30,7 +34,7 @@ export interface PsudoSubzone {
     background: string;
     music: Music | null;
     textures: Record<string, string>;
-    filters: Record<string, Record<string, any>>;
+    postprocess: BasePostProcessingConfig[];
     theme: Record<string, string>;
 }
 export {};

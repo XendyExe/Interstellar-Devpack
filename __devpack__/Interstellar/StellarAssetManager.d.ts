@@ -9,8 +9,11 @@ declare class AssetManager {
     internal: AssetStoreData | undefined;
     urlTable: Record<string, string>;
     modAssetTable: Record<string, AssetStoreData>;
+    internalMap: Record<string, string>;
+    assetPaths: string[];
     init(): Promise<void>;
     getUpdates(): Promise<number[]>;
+    getInternalUpdates(): [string[], string[]];
     pushAssetStore(name: string, storeData: AssetStoreData): Promise<void>;
     loadAssetStore(name: string): Promise<AssetStoreData>;
     putIntoStore(store: IDBObjectStore, key: string, value: any): Promise<unknown>;

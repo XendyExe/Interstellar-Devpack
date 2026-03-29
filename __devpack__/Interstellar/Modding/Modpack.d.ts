@@ -8,6 +8,12 @@ export declare class Modpack {
     getFile: Function;
     cleanFiles: Function;
     devpack: boolean;
+    assetStoreName: string;
+    internalName: string | undefined;
+    constructor(assetStoreName: string, internalName?: string | undefined);
+    logGroup: any[][];
+    log(...logged: any[]): void;
+    pushLog(msg: string): void;
     initdevpack(getFilesFunction: Function, internal: boolean, cleanFilesFunction: Function, nonvalidation?: boolean): Promise<Modpack>;
     init(getFilesFunction: Function, internal: boolean, cleanFilesFunction: Function, nonvalidation?: boolean): Promise<Modpack>;
     load(textureCache: Record<string, Blob>, nonvalidation?: boolean): Promise<void>;
@@ -15,4 +21,4 @@ export declare class Modpack {
     getFileURL(path: string): Promise<string>;
     readJson(path: string): Promise<any>;
 }
-export declare function createModpack(flattened: Record<string, BlobContainer>, internal: boolean): Promise<Modpack>;
+export declare function createModpack(flattened: Record<string, BlobContainer>, internal_name: string | undefined, assetStoreName: string): Promise<Modpack>;
