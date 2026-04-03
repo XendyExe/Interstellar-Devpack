@@ -82,19 +82,19 @@ declare class Interstellar {
     api: {
         websocket: WebSocket | undefined;
         UI: {
-            settingModels: Record<string, import("preact").VNode>;
+            settingModels: Record<string, VNode>;
             showPrompt(title: string, description: string, callback: Function): void;
             openPromptEx(title: string, msg: string, type: any, callback: Function, fail_callback: Function): void;
             openPromptConfirm(title: string, description: string, callback: Function): void;
-            openModal(model: import("preact").VNode, error?: boolean, unclosable?: boolean): void;
+            openModal(model: VNode, error?: boolean, unclosable?: boolean): void;
             closeModel(): void;
-            registerSettingsModel(name: string, model: import("preact").VNode): void;
-            preactAppendChild(parent: import("preact").VNode, node: import("preact").VNode): void;
-            preactInsertBefore(parent: import("preact").VNode, referenceNode: import("preact").VNode, node: import("preact").VNode): void;
-            preactInsertAfter(parent: import("preact").VNode, referenceNode: import("preact").VNode, node: import("preact").VNode): void;
-            preactPrependChild(parent: import("preact").VNode, node: import("preact").VNode): void;
-            preactGetChildWithID(vnode: import("preact").VNode, id: string): import("preact").VNode | null;
-            preactNormalizeChildren(children: any): import("preact").VNode[];
+            registerSettingsModel(name: string, model: VNode): void;
+            preactAppendChild(parent: VNode, node: VNode): void;
+            preactInsertBefore(parent: VNode, referenceNode: VNode, node: VNode): void;
+            preactInsertAfter(parent: VNode, referenceNode: VNode, node: VNode): void;
+            preactPrependChild(parent: VNode, node: VNode): void;
+            preactGetChildWithID(vnode: VNode, id: string): VNode | null;
+            preactNormalizeChildren(children: any): VNode[];
             toggleUI(model?: string): void;
             openChat(): void;
             closeChat(): void;
