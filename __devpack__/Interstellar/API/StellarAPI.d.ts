@@ -106,6 +106,7 @@ declare class InterstellarGameAPI {
     getPlayerX(): any;
     getPlayerY(): any;
     getNavDestination(): any;
+    getCurrentZone(): string;
     leaveShip(): any;
     getZoom(): number;
     getColor(x: number, y: number): number;
@@ -238,6 +239,7 @@ declare class StellarAPI {
         connectServer: number;
         ingame: boolean;
         dev: boolean;
+        failedLoading: [string, string, any][];
         build: number;
         lastDelta: number;
         deltaTime: number;
@@ -251,6 +253,7 @@ declare class StellarAPI {
         sendChatLog(message: string): void;
         tryImport(e: any): boolean;
         finalize_frame(): void;
+        reportFailed(modid: string, message: string, error: any): void;
     };
     DrednotSettings: InterstellarDrednotSettingsAPI;
     Packet: InterstellarPacketAPI;

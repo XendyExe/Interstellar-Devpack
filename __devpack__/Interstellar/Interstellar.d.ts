@@ -127,6 +127,7 @@ declare class Interstellar {
             getPlayerX(): any;
             getPlayerY(): any;
             getNavDestination(): any;
+            getCurrentZone(): string;
             leaveShip(): any;
             getZoom(): number;
             getColor(x: number, y: number): number;
@@ -185,6 +186,7 @@ declare class Interstellar {
     connectServer: number;
     ingame: boolean;
     dev: boolean;
+    failedLoading: [string, string, any][];
     build: number;
     lastDelta: number;
     deltaTime: number;
@@ -200,6 +202,7 @@ declare class Interstellar {
     sendChatLog(message: string): void;
     tryImport(e: any): boolean;
     finalize_frame(): void;
+    reportFailed(modid: string, message: string, error: any): void;
 }
 declare const _default: Interstellar;
 export default _default;
