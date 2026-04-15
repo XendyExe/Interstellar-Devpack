@@ -5,7 +5,7 @@ declare class ZoneBackground {
     alpha: number;
     constructor(width: number, height: number, isPixelArt: boolean);
     update(): void;
-    render(): void;
+    render(defaultFillColor: [number, number, number]): void;
     load(): Promise<void>;
     unload(): Promise<void>;
 }

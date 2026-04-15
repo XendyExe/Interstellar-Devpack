@@ -20,6 +20,10 @@ declare class InterstellarUIAPI {
     writeChat(innerHTML: string): void;
     getChatInputElement(): HTMLInputElement;
     isChatInputFocused(): boolean;
+    screenRender(callback: CallableFunction): void;
+    drawRect(x: number, y: number, width: number, height: number, color: number): void;
+    translate(x: number, y: number, callback: CallableFunction): any;
+    drawRectRaw(color: number, width: number, height: number): any;
 }
 declare class InterstellarInputAPI {
     keyDown(keyCode: string): boolean;
@@ -209,6 +213,7 @@ declare class StellarAPI {
             modAssetTable: Record<string, import("../StellarAssetManager").AssetStoreData>;
             internalMap: Record<string, string>;
             assetPaths: string[];
+            reference_counter: number;
             init(): Promise<void>;
             getUpdates(): Promise<number[]>;
             getInternalUpdates(): [string[], string[]];
@@ -217,6 +222,8 @@ declare class StellarAPI {
             putIntoStore(store: IDBObjectStore, key: string, value: any): Promise<unknown>;
             removeFromStore(store: IDBObjectStore, key: string): Promise<unknown>;
             initDatabase(): Promise<IDBDatabase>;
+            openDatabase(): Promise<IDBDatabase>;
+            closeDatabase(): Promise<void>;
             createAssetStore(name: string, dbName?: string): Promise<void>;
             deleteAssetStore(name: string, dbName?: string): Promise<void>;
             reloadDatabaseWithUpgrade(dbName: string, upgrade: (db: IDBDatabase) => void): Promise<void>;
@@ -249,6 +256,7 @@ declare class StellarAPI {
         startTick(): void;
         endTick(): void;
         teleport(name: string): void;
+        reload_zone(): void;
         yield(): Promise<void>;
         sendChatLog(message: string): void;
         tryImport(e: any): boolean;

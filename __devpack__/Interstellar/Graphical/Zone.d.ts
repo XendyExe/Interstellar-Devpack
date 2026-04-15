@@ -15,7 +15,7 @@ export interface SubZone {
     gameProcessors: (PostProcessor | ComplexPostProcessor)[];
     bgProcessors: (PostProcessor | ComplexPostProcessor)[];
 }
-declare class Zone {
+export default class Zone {
     displayName: string;
     displayDescription: string;
     displayColor: number;
@@ -30,6 +30,5 @@ declare class Zone {
     createZone(): void;
     tick(): void;
     update(): void;
-    render(): void;
+    render(fill_color: [number, number, number]): void;
 }
-export default Zone;

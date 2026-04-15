@@ -66,6 +66,7 @@ export declare class WebGLZoneBackground extends ZoneBackground {
     config: BackgroundConfig;
     object_store: string;
     internal_name: string;
+    fill_color: [number, number, number] | null;
     constructor(config_path: string, config: BackgroundConfig, object_store: string, width: number, height: number, isPixelArt: boolean, internal_name: string | undefined);
     logGroup: any[][];
     log(...logged: any[]): void;
@@ -74,6 +75,7 @@ export declare class WebGLZoneBackground extends ZoneBackground {
     locked: boolean;
     loaded: boolean;
     unload_locked: boolean;
+    fill_mode: boolean;
     load(): Promise<void>;
     /**
      * Loads assets from IndexedDB, returning a list of bitmaps and subtextures for further processing.
@@ -100,7 +102,7 @@ export declare class WebGLZoneBackground extends ZoneBackground {
     lastResolutionHeight: number;
     lastOpacity: number;
     lastZoomScale: number;
-    render(): void;
+    render(defaultFillColor: [number, number, number]): void;
     unload(): Promise<void>;
 }
 export {};

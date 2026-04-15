@@ -11,6 +11,7 @@ declare class AssetManager {
     modAssetTable: Record<string, AssetStoreData>;
     internalMap: Record<string, string>;
     assetPaths: string[];
+    reference_counter: number;
     init(): Promise<void>;
     getUpdates(): Promise<number[]>;
     getInternalUpdates(): [string[], string[]];
@@ -19,6 +20,8 @@ declare class AssetManager {
     putIntoStore(store: IDBObjectStore, key: string, value: any): Promise<unknown>;
     removeFromStore(store: IDBObjectStore, key: string): Promise<unknown>;
     initDatabase(): Promise<IDBDatabase>;
+    openDatabase(): Promise<IDBDatabase>;
+    closeDatabase(): Promise<void>;
     createAssetStore(name: string, dbName?: string): Promise<void>;
     deleteAssetStore(name: string, dbName?: string): Promise<void>;
     reloadDatabaseWithUpgrade(dbName: string, upgrade: (db: IDBDatabase) => void): Promise<void>;

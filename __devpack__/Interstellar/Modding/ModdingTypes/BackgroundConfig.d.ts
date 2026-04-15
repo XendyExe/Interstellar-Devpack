@@ -28,11 +28,14 @@ export interface BackgroundSpriteConfig {
     boby?: number;
     bobt?: number;
     bobo?: number;
+    low_detail?: boolean;
+    high_detail?: boolean;
 }
 export interface BackgroundConfig {
     width: number;
     height: number;
     isPixelArt?: boolean;
+    fillColor?: string;
     sprites: BackgroundSpriteConfig[];
     backdrops?: any[];
 }

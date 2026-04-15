@@ -1,5 +1,8 @@
 interface InterstellarSettingTypes {
     musicVolume: number;
+    disableZoneBackgrounds: boolean;
+    disableFilters: boolean;
+    disableComplexGFX: boolean;
 }
 export declare class InterstellarSettings {
     settings: InterstellarSettingTypes;
