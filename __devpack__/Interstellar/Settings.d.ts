@@ -3,6 +3,8 @@ interface InterstellarSettingTypes {
     disableZoneBackgrounds: boolean;
     disableFilters: boolean;
     disableComplexGFX: boolean;
+    disableTelemetry: boolean;
+    disableInterstellarBadge: boolean;
 }
 export declare class InterstellarSettings {
     settings: InterstellarSettingTypes;

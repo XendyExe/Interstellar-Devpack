@@ -127,11 +127,21 @@ export declare class InterstellarDrednotSettingsAPI {
     getSettings(): any;
     setEnableGriefingWarning(enabled: boolean): void;
 }
+declare class InterstellarTelemetryAPI {
+    getEventSchema(): Record<string, string>;
+    getEventState(): Record<string, {
+        time: number;
+        event: string;
+    }>;
+    isDisabled(): boolean;
+    connected(): boolean;
+}
 declare class StellarAPI {
     websocket: WebSocket | undefined;
     UI: InterstellarUIAPI;
     Input: InterstellarInputAPI;
     Game: InterstellarGameAPI;
+    Telemetry: InterstellarTelemetryAPI;
     Interstellar: {
         drednotCanvas: HTMLCanvasElement;
         patcher: {
@@ -200,6 +210,7 @@ declare class StellarAPI {
             startBorderRender(): void;
             endBorderRender(): void;
             update_ship_info(health: number, max_health: number, warp_time: number, max_warp_time: number, overworld: any, ship_world: any): void;
+            doShipyardFilters(props: any): boolean;
         };
         settingsManager: import("../Settings").InterstellarSettings;
         api: StellarAPI;
@@ -248,9 +259,12 @@ declare class StellarAPI {
         dev: boolean;
         failedLoading: [string, string, any][];
         build: number;
+        telemetry: import("../Telemetry").default;
+        badge_url: string;
         lastDelta: number;
         deltaTime: number;
         init(): void;
+        modsAreConfigurable: boolean;
         loaded(): Promise<void>;
         backgroundLoader(): Promise<void>;
         startTick(): void;
@@ -262,6 +276,7 @@ declare class StellarAPI {
         tryImport(e: any): boolean;
         finalize_frame(): void;
         reportFailed(modid: string, message: string, error: any): void;
+        getBadgeURL(): string;
     };
     DrednotSettings: InterstellarDrednotSettingsAPI;
     Packet: InterstellarPacketAPI;

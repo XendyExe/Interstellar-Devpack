@@ -78,6 +78,25 @@ export declare class RenderSettingsEvent extends UIEvent {
     displaySettings: VNode;
     inputSettings: VNode;
 }
+type FilterShipEntry = {
+    id: number;
+    ship: {
+        color: string;
+        hex_code: string;
+        icon_path: string;
+        owned: boolean;
+        player_count: 0;
+        saved: boolean;
+        team_name: string;
+        time: number;
+    };
+};
+export declare class FilterShipEvent extends BaseEvent {
+    data: FilterShipEntry;
+    removed: boolean;
+    constructor(data: FilterShipEntry);
+    removeFromShipyard(): void;
+}
 export declare class RenderCrewListEvent extends UIEvent {
 }
 export declare class RenderCrewControlEvent extends UIEvent {
@@ -128,3 +147,4 @@ export declare class RenderPassTwoEvent extends RenderPassEvent {
 export declare class RenderPassThreeEvent extends RenderPassEvent {
 }
 export declare function createEventExports(): Record<string, any>;
+export {};

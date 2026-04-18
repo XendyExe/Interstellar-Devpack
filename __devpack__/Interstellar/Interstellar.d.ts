@@ -8,6 +8,7 @@ import { InterstellarPacketAPI, InterstellarDrednotSettingsAPI } from "./API/Ste
 import DebugMenu from "./DebugMenu";
 import InterstellarScriptingMod from "./API/InterstellarScriptingMod";
 import UIEventDispatcher from "./Patching/UIEventDispatcher";
+import Telemetry from "./Telemetry";
 type Modpacks = Modpack | TexturePack;
 declare class Interstellar {
     drednotCanvas: HTMLCanvasElement;
@@ -77,24 +78,25 @@ declare class Interstellar {
         startBorderRender(): void;
         endBorderRender(): void;
         update_ship_info(health: number, max_health: number, warp_time: number, max_warp_time: number, overworld: any, ship_world: any): void;
+        doShipyardFilters(props: any): boolean;
     };
     settingsManager: InterstellarSettings;
     api: {
         websocket: WebSocket | undefined;
         UI: {
-            settingModels: Record<string, VNode>;
+            settingModels: Record<string, import("preact").VNode>;
             showPrompt(title: string, description: string, callback: Function): void;
             openPromptEx(title: string, msg: string, type: any, callback: Function, fail_callback: Function): void;
             openPromptConfirm(title: string, description: string, callback: Function): void;
-            openModal(model: VNode, error?: boolean, unclosable?: boolean): void;
+            openModal(model: import("preact").VNode, error?: boolean, unclosable?: boolean): void;
             closeModel(): void;
-            registerSettingsModel(name: string, model: VNode): void;
-            preactAppendChild(parent: VNode, node: VNode): void;
-            preactInsertBefore(parent: VNode, referenceNode: VNode, node: VNode): void;
-            preactInsertAfter(parent: VNode, referenceNode: VNode, node: VNode): void;
-            preactPrependChild(parent: VNode, node: VNode): void;
-            preactGetChildWithID(vnode: VNode, id: string): VNode | null;
-            preactNormalizeChildren(children: any): VNode[];
+            registerSettingsModel(name: string, model: import("preact").VNode): void;
+            preactAppendChild(parent: import("preact").VNode, node: import("preact").VNode): void;
+            preactInsertBefore(parent: import("preact").VNode, referenceNode: import("preact").VNode, node: import("preact").VNode): void;
+            preactInsertAfter(parent: import("preact").VNode, referenceNode: import("preact").VNode, node: import("preact").VNode): void;
+            preactPrependChild(parent: import("preact").VNode, node: import("preact").VNode): void;
+            preactGetChildWithID(vnode: import("preact").VNode, id: string): import("preact").VNode | null;
+            preactNormalizeChildren(children: any): import("preact").VNode[];
             toggleUI(model?: string): void;
             openChat(): void;
             closeChat(): void;
@@ -138,6 +140,15 @@ declare class Interstellar {
             setColor(x: number, y: number, color: number): void;
             drawText(text: string, x: number, y: number, color: number | string, size: number | undefined): any;
             getLatestPredictedCommandNumber(): any;
+        };
+        Telemetry: {
+            getEventSchema(): Record<string, string>;
+            getEventState(): Record<string, {
+                time: number;
+                event: string;
+            }>;
+            isDisabled(): boolean;
+            connected(): boolean;
         };
         Interstellar: Interstellar;
         DrednotSettings: InterstellarDrednotSettingsAPI;
@@ -195,10 +206,13 @@ declare class Interstellar {
     dev: boolean;
     failedLoading: [string, string, any][];
     build: number;
+    telemetry: Telemetry;
+    badge_url: string;
     lastDelta: number;
     deltaTime: number;
     constructor();
     init(): void;
+    modsAreConfigurable: boolean;
     loaded(): Promise<void>;
     backgroundLoader(): Promise<void>;
     startTick(): void;
@@ -211,6 +225,7 @@ declare class Interstellar {
     tryImport(e: any): boolean;
     finalize_frame(): void;
     reportFailed(modid: string, message: string, error: any): void;
+    getBadgeURL(): string;
 }
 declare const _default: Interstellar;
 export default _default;

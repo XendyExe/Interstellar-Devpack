@@ -65,6 +65,7 @@ declare class Patcher {
     startBorderRender(): void;
     endBorderRender(): void;
     update_ship_info(health: number, max_health: number, warp_time: number, max_warp_time: number, overworld: any, ship_world: any): void;
+    doShipyardFilters(props: any): boolean;
 }
 declare const _default: Patcher;
 export default _default;
