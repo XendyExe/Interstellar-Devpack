@@ -5,6 +5,7 @@ interface InterstellarSettingTypes {
     disableComplexGFX: boolean;
     disableTelemetry: boolean;
     disableInterstellarBadge: boolean;
+    disableCycleZones: boolean;
 }
 export declare class InterstellarSettings {
     settings: InterstellarSettingTypes;
