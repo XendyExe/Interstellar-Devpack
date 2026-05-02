@@ -103,18 +103,11 @@ export type ShipState = {
     world_id: number;
     ent_id: number;
     name: string;
-    x: number;
-    y: number;
-    thrust_x: number;
-    thrust_y: number;
     block_w: number;
     block_h: number;
-    ecs_w: number;
-    ecs_h: number;
     hull_hp: number;
     shield_hp: number;
     total_health: number;
-    warp_time: number;
     color: number;
     players: Record<string, PlayerState>;
 };
