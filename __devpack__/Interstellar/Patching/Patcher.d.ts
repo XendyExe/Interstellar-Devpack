@@ -38,6 +38,8 @@ declare class Patcher {
     finalize_frame(): void;
     patchAssetTables(images: Record<string, string>, audio: Record<string, string>): void;
     handleMessage(message: any): any;
+    chatQueue: any[];
+    lastChatTime: number;
     handleMessageSend(message: any): any;
     socketclose(event: any): void;
     processMOTD(motd: string): string;

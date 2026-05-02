@@ -67,7 +67,8 @@ export declare class WebGLZoneBackground extends ZoneBackground {
     object_store: string;
     internal_name: string;
     fill_color: [number, number, number] | null;
-    constructor(config_path: string, config: BackgroundConfig, object_store: string, width: number, height: number, isPixelArt: boolean, internal_name: string | undefined);
+    devpack: boolean;
+    constructor(config_path: string, config: BackgroundConfig, object_store: string, width: number, height: number, isPixelArt: boolean, internal_name: string | undefined, devpack: boolean);
     logGroup: any[][];
     log(...logged: any[]): void;
     pushLog(msg: string): void;

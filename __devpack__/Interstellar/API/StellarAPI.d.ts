@@ -99,6 +99,50 @@ export declare class InterstellarPacketAPI {
     ShMsgResizeShip: any;
     ShMsgInternalRPC: any;
 }
+export type ShipState = {
+    world_id: number;
+    ent_id: number;
+    name: string;
+    x: number;
+    y: number;
+    thrust_x: number;
+    thrust_y: number;
+    block_w: number;
+    block_h: number;
+    ecs_w: number;
+    ecs_h: number;
+    hull_hp: number;
+    shield_hp: number;
+    total_health: number;
+    warp_time: number;
+    color: number;
+    players: Record<string, PlayerState>;
+};
+export type PlayerState = {
+    name: string;
+    ent_id: number;
+    rank: number;
+    x: number;
+    y: number;
+    held_item: number;
+    face_slot: number;
+    head_slot: number;
+    hand_slot: number;
+    body_slot: number;
+    back_slot: number;
+    feet_slot: number;
+    is_invisible: boolean;
+    is_noclip: boolean;
+    is_sandbox: boolean;
+    is_on_floor: boolean;
+    beam_angle: number;
+    beam_length: number;
+    handheld_mode: number;
+};
+export type WorldState = {
+    current_world: number;
+    [key: string]: ShipState | number;
+};
 declare class InterstellarGameAPI {
     sentCrewControlRequest: boolean;
     cachedCrewControl: PlayerListEntry[];
@@ -117,6 +161,12 @@ declare class InterstellarGameAPI {
     setColor(x: number, y: number, color: number): void;
     drawText(text: string, x: number, y: number, color: number | string, size: number | undefined): any;
     getLatestPredictedCommandNumber(): any;
+    getWorldState(): WorldState;
+    getLocalShipState(): ShipState | undefined;
+    getLocalShipPlayers(): Record<string, PlayerState> | undefined;
+    getCurrentShipID(): number;
+    getShipState(id: string): ShipState | undefined;
+    getShipPlayers(id: string): Record<string, PlayerState> | undefined;
 }
 declare class TurretModes {
     ContinuousFire: any;
@@ -183,6 +233,8 @@ declare class StellarAPI {
             finalize_frame(): void;
             patchAssetTables(images: Record<string, string>, audio: Record<string, string>): void;
             handleMessage(message: any): any;
+            chatQueue: any[];
+            lastChatTime: number;
             handleMessageSend(message: any): any;
             socketclose(event: any): void;
             processMOTD(motd: string): string;

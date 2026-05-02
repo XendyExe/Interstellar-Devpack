@@ -51,6 +51,8 @@ declare class Interstellar {
         finalize_frame(): void;
         patchAssetTables(images: Record<string, string>, audio: Record<string, string>): void;
         handleMessage(message: any): any;
+        chatQueue: any[];
+        lastChatTime: number;
         handleMessageSend(message: any): any;
         socketclose(event: any): void;
         processMOTD(motd: string): string;
@@ -140,6 +142,12 @@ declare class Interstellar {
             setColor(x: number, y: number, color: number): void;
             drawText(text: string, x: number, y: number, color: number | string, size: number | undefined): any;
             getLatestPredictedCommandNumber(): any;
+            getWorldState(): import("./API/StellarAPI").WorldState;
+            getLocalShipState(): import("./API/StellarAPI").ShipState | undefined;
+            getLocalShipPlayers(): Record<string, import("./API/StellarAPI").PlayerState> | undefined;
+            getCurrentShipID(): number;
+            getShipState(id: string): import("./API/StellarAPI").ShipState | undefined;
+            getShipPlayers(id: string): Record<string, import("./API/StellarAPI").PlayerState> | undefined;
         };
         Telemetry: {
             getEventSchema(): Record<string, string>;
