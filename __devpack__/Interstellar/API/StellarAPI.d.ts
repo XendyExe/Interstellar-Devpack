@@ -131,6 +131,7 @@ export type PlayerState = {
     beam_angle: number;
     beam_length: number;
     handheld_mode: number;
+    facing_direction: number;
 };
 export type WorldState = {
     current_world: number;
