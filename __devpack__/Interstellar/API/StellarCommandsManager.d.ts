@@ -8,7 +8,8 @@ export declare abstract class Argument<T> {
 export declare class OptionsArgument extends Argument<string> {
     options: string[];
     hidden: string[];
-    constructor(name: string, options: string[], hidden?: string[]);
+    greedy: boolean;
+    constructor(name: string, options: string[], hidden?: string[], greedy?: boolean);
     autocomplete(split: string): string[];
     extractValue(split: string): string;
 }
