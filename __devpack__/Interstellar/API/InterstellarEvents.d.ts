@@ -119,6 +119,10 @@ export declare class RenderShiplistSidebarEvent extends UIEvent {
 }
 export declare class RenderShiplistAdSlotEvent extends UIEvent {
 }
+export declare class WriteChatEvent extends CancelableEvent {
+    html: string;
+    constructor(html: string);
+}
 export declare class ProcessMOTDEvent extends BaseEvent {
     motd: string;
     constructor(d: string);

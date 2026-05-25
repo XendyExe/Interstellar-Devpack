@@ -7,6 +7,7 @@ export declare class Music {
     assetStore: string;
     path: string;
     start_time: number;
+    playing: boolean;
     constructor(path: string, hash: string, startTime: number);
     load(): Promise<void>;
     activate(): Promise<void>;

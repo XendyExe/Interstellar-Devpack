@@ -81,6 +81,7 @@ declare class Interstellar {
         endBorderRender(): void;
         update_ship_info(health: number, max_health: number, warp_time: number, max_warp_time: number, overworld: any, ship_world: any): void;
         doShipyardFilters(props: any): boolean;
+        onWriteChat(element: string): boolean;
     };
     settingsManager: InterstellarSettings;
     api: {
@@ -164,7 +165,7 @@ declare class Interstellar {
         currentShip: import("./API/Utils").CurrentShipData | null;
         joinShip(server: number | null, data: any): Promise<void>;
         sendChat(text: string, no_events: boolean | undefined): void;
-        sendPacket(packet: any): void;
+        sendPacket(packet: any, bypassEvent?: boolean): void;
         isCaptain(): boolean;
         playerName(): string;
         getSelectedServer(): number;
