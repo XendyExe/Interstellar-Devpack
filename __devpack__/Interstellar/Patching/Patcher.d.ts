@@ -50,7 +50,7 @@ declare class Patcher {
         x: any;
         y: any;
     };
-    patchNavNames(zone: number): string;
+    patchNavNames(zone: number): any;
     onChatClose(): void;
     onSendChat(message: string): string;
     patchZoneDescription(zone: string): (string | number)[];

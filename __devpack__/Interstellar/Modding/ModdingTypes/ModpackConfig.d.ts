@@ -12,4 +12,5 @@ export default interface ModpackConfig {
     texture_pack?: boolean;
     scripting?: string;
     entrypoint?: string;
+    collapse_tiers?: boolean;
 }

@@ -25,6 +25,7 @@ export default class Zone {
     currentMusic: any | null;
     currentIndex: number;
     transitionTarget: number;
+    collapse_tiers: boolean;
     constructor(subzones: SubZone[], currentIndex?: number);
     teleportToZone(other: Zone): void;
     createZone(): void;
