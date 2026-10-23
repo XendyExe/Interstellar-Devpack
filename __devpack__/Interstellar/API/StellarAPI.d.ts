@@ -171,21 +171,11 @@ export declare class InterstellarDrednotSettingsAPI {
     getSettings(): any;
     setEnableGriefingWarning(enabled: boolean): void;
 }
-declare class InterstellarTelemetryAPI {
-    getEventSchema(): Record<string, string>;
-    getEventState(): Record<string, {
-        time: number;
-        event: string;
-    }>;
-    isDisabled(): boolean;
-    connected(): boolean;
-}
 declare class StellarAPI {
     websocket: WebSocket | undefined;
     UI: InterstellarUIAPI;
     Input: InterstellarInputAPI;
     Game: InterstellarGameAPI;
-    Telemetry: InterstellarTelemetryAPI;
     Interstellar: {
         drednotCanvas: HTMLCanvasElement;
         patcher: {

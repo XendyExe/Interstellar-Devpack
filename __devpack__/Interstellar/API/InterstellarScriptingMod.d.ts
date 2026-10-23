@@ -9,7 +9,6 @@ export declare class IndividualModAPI {
     modname: string;
     constructor(modid: string, modname: string);
     setConfiguration(options: Record<string, BaseModSetting<any>>): void;
-    requestTelemetry(): any;
 }
 export default class InterstellarScriptingMod {
     modAPI: IndividualModAPI;

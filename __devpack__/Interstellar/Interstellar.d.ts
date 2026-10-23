@@ -150,15 +150,6 @@ declare class Interstellar {
             getShipState(id: string): import("./API/StellarAPI").ShipState | undefined;
             getShipPlayers(id: string): Record<string, import("./API/StellarAPI").PlayerState> | undefined;
         };
-        Telemetry: {
-            getEventSchema(): Record<string, string>;
-            getEventState(): Record<string, {
-                time: number;
-                event: string;
-            }>;
-            isDisabled(): boolean;
-            connected(): boolean;
-        };
         Interstellar: Interstellar;
         DrednotSettings: InterstellarDrednotSettingsAPI;
         Packet: InterstellarPacketAPI;
