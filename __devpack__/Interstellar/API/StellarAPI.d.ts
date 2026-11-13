@@ -100,6 +100,9 @@ export declare class InterstellarPacketAPI {
     ShMsgInternalRPC: any;
 }
 export type ShipState = {
+    hex_code: string;
+    x: number;
+    y: number;
     world_id: number;
     ent_id: number;
     name: string;
